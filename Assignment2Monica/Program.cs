@@ -10,6 +10,7 @@ namespace Assignment_2
         //summary      : merge two different list into a single result list
         //return       : merged list
         //return type  : StockList
+        // Added more changes 
         public StockList MergeList(StockList listToMerge)
         {
             StockList resultList = new StockList();
