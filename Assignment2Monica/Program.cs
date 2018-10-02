@@ -1,12 +1,78 @@
 ﻿using System;
-
-namespace Assignment2Monica
+using System.Collections.Generic;
+using System.Text;
+using System.Collections;
+namespace Assignment_2
 {
-    class Program
+    public partial class StockList
     {
-        static void Main(string[] args)
+        //param   (StockList)listToMerge : second list to be merged 
+        //summary      : merge two different list into a single result list
+        //return       : merged list
+        //return type  : StockList
+        public StockList MergeList(StockList listToMerge)
         {
-            Console.WriteLine("Hello World!");
+            StockList resultList = new StockList();
+
+            // write your implementation here
+            //merging two lists using the while conditional statement
+            StockNode node = this.head;
+            while (node != null)
+            {
+                resultList.AddLast(node.StockHolding);
+                node = node.Next;
+            }
+            node = listToMerge.head;
+            while (node != null)
+            {
+                resultList.AddLast(node.StockHolding);
+                node = node.Next;
+            }
+            // returning final list   
+            return resultList;
+        }
+
+        //param        : NA
+        //summary      : finds the stock with most number of holdings
+        //return       : stock with most shares
+        //return type  : Stock
+        public Stock MostShares()
+        {
+            Stock mostShareStock = null;
+
+            StockNode stock = this.head;
+            decimal maxHoldings = 0.0m;
+
+            while (stock != null)
+            {
+                if (stock.StockHolding.Holdings > maxHoldings)
+                {
+                    maxHoldings = stock.StockHolding.Holdings;
+                    mostShareStock = stock.StockHolding;
+                }
+                stock = stock.Next;
+            }
+
+            return mostShareStock;
+        }
+
+        //param        : NA
+        //summary      : finds the number of nodes present in the list
+        //return       : length of list
+        //return type  : int
+        //using while loop 
+        public int Length()
+        {
+            int length = 0;
+
+            StockNode sNode = this.head;
+
+            while (sNode != null)
+            {
+                length++;
+                sNode = sNode.Next;
+            }
+            return length;
         }
     }
 }
